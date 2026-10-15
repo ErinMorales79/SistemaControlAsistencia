@@ -1,6 +1,7 @@
 # excepciones.py
 # excepciones personalizadas del sistema de asistencia
 # no depende de ningun otro archivo del proyecto
+#AGREGAMOS UNA LINEA PARA HACER UN GIT PUSH
 
 
 # aplicamos herencia: todas nuestras excepciones heredan de Exception

@@ -20,12 +20,12 @@ También calcula las horas trabajadas, las alertas (llegada tarde, salida antici
 
 ## Requisitos
 
-| Requisito | Para qué |
-|---|---|
-| Python 3.13 o superior | Ejecutar el sistema |
-| Librería `requests` | Descargar los días feriados |
-| `openssl` (en Windows viene con **Git para Windows**) | Crear el certificado HTTPS la primera vez |
-| Un celular con GPS y navegador | Marcar asistencia (en iPhone, usar **Safari**) |
+| Requisito                                             | Para qué                                       |
+| ----------------------------------------------------- | ---------------------------------------------- |
+| Python 3.13 o superior                                | Ejecutar el sistema                            |
+| Librería `requests`                                   | Descargar los días feriados                    |
+| `openssl` (en Windows viene con **Git para Windows**) | Crear el certificado HTTPS la primera vez      |
+| Un celular con GPS y navegador                        | Marcar asistencia (en iPhone, usar **Safari**) |
 
 Instalar `requests`:
 
@@ -61,12 +61,12 @@ La primera vez se crean solas:
 
 Si no existe `datos/datos.json`, el sistema arranca con los datos de `datos_ejemplo.json`: 2 sucursales, 4 usuarios y 3 semanas de marcas.
 
-| Usuario (correo) | Contraseña | Rol | Sucursal |
-|---|---|---|---|
-| `erin.morales@empresa.com` | `Erin1234` | **Superadmin** | Toda la empresa |
-| `luis.perez@empresa.com` | `Luis1234` | Trabajador | Tienda Zona 10 (trabaja sábados) |
-| `maria.garcia@empresa.com` | `María1234` | Trabajador | Bodega Central |
-| `ana.lopez@empresa.com` | `Ana1234` | Trabajador (horario libre) | Bodega Central |
+| Usuario (correo)           | Contraseña  | Rol                        | Sucursal                         |
+| -------------------------- | ----------- | -------------------------- | -------------------------------- |
+| `erin.morales@empresa.com` | `Erin1234`  | **Superadmin**             | Toda la empresa                  |
+| `luis.perez@empresa.com`   | `Luis1234`  | Trabajador                 | Tienda Zona 10 (trabaja sábados) |
+| `maria.garcia@empresa.com` | `María1234` | Trabajador                 | Bodega Central                   |
+| `ana.lopez@empresa.com`    | `Ana1234`   | Trabajador (horario libre) | Bodega Central                   |
 
 Las coordenadas de las sucursales de ejemplo son inventadas. Para probar el GPS de verdad, crea una sucursal con tu ubicación real (botón **"Usar mi ubicación actual"**).
 
@@ -76,11 +76,11 @@ Para volver a empezar con los datos de ejemplo, borra la carpeta `datos/`.
 
 El **usuario es el correo**. La contraseña inicial de cada empleado es **su nombre + 1234** (por ejemplo `Erin1234`).
 
-| Rol | Qué puede hacer |
-|---|---|
-| **Superadmin** | Toda la empresa: sucursales, trabajadores, roles, asistencia, anomalías, reporte, exportar y deshacer. No es empleado: no marca asistencia. El superadmin principal (código `EMP-004`) no se puede destituir ni eliminar, y es el único que nombra a otros superadmins |
-| **Admin** (encargado) | Solo su sucursal: crea y edita trabajadores, corrige marcas, ve la asistencia, el reporte y las anomalías, y restablece contraseñas. También marca su propia asistencia |
-| **Trabajador** | Inicia sesión, marca su asistencia y ve su propio historial |
+| Rol                   | Qué puede hacer                                                                                                                                                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Superadmin**        | Toda la empresa: sucursales, trabajadores, roles, asistencia, anomalías, reporte, exportar y deshacer. No es empleado: no marca asistencia. El superadmin principal (código `EMP-004`) no se puede destituir ni eliminar, y es el único que nombra a otros superadmins |
+| **Admin** (encargado) | Solo su sucursal: crea y edita trabajadores, corrige marcas, ve la asistencia, el reporte y las anomalías, y restablece contraseñas. También marca su propia asistencia                                                                                                |
+| **Trabajador**        | Inicia sesión, marca su asistencia y ve su propio historial                                                                                                                                                                                                            |
 
 - Solo un admin puede **restablecer** la contraseña de un trabajador (vuelve a `Nombre1234`).
 - Cada admin cambia la suya en **Mi cuenta**.
@@ -91,9 +91,9 @@ El **usuario es el correo**. La contraseña inicial de cada empleado es **su nom
 
 1. El celular y la PC deben estar en la **misma red Wi-Fi** (no en la red de invitados).
 2. Arranca el servidor en la PC.
-3. Copia la dirección *"Desde el teléfono"* que muestra la consola.
+3. Copia la dirección _"Desde el teléfono"_ que muestra la consola.
 4. En el celular, escríbela **completa**, con `https://` al inicio y `:8080` al final.
-5. Aparece *"La conexión no es privada"* (por el certificado propio): toca **Configuración avanzada / Mostrar detalles** y luego **Continuar / Visitar este sitio web**.
+5. Aparece _"La conexión no es privada"_ (por el certificado propio): toca **Configuración avanzada / Mostrar detalles** y luego **Continuar / Visitar este sitio web**.
 6. Inicia sesión, toca **Marcar** y **permite el uso de la ubicación**.
 
 ### Sin Wi-Fi (zona Wi-Fi del celular)
@@ -118,11 +118,11 @@ La primera vez, Windows puede preguntar si Python puede usar la red: acepta en *
 
 **Radio recomendado por sucursal:**
 
-| Tipo | Radio |
-|---|---|
-| Tienda pequeña | 35 m |
-| Tienda grande o en centro comercial | 50 m |
-| Bodega | 60 a 100 m |
+| Tipo                                | Radio      |
+| ----------------------------------- | ---------- |
+| Tienda pequeña                      | 35 m       |
+| Tienda grande o en centro comercial | 50 m       |
+| Bodega                              | 60 a 100 m |
 
 No conviene usar menos de 25–30 m: dentro de los edificios el GPS puede equivocarse entre 15 y 30 m.
 
@@ -130,27 +130,27 @@ No conviene usar menos de 25–30 m: dentro de los edificios el GPS puede equivo
 
 Los valores principales están en `utilidades.py` y `main.py`:
 
-| Constante | Valor | Qué controla |
-|---|---|---|
-| `HOST` (`main.py`) | `"0.0.0.0"` | Acepta aparatos de la red (`"127.0.0.1"` = solo esta PC) |
-| `PUERTO` (`main.py`) | `8080` | Puerto del servidor |
-| `USAR_HTTPS` | `True` | HTTPS (necesario para el GPS en el celular) |
-| `RADIO_DEFECTO` | `100` | Radio de una sucursal nueva, en metros |
-| `PRECISION_MINIMA` | `100` | Error máximo del GPS aceptado, en metros |
-| `SEGUNDOS_ENTRE_MARCAS` | `5 * 60` | Tiempo mínimo entre marcas |
-| `HORAS_SEMANALES` | `44 * 3600` | Meta semanal |
-| `TOLERANCIA_SEMANAL` | `15 * 60` | Desde 43 h 45 m cuenta como semana completa |
-| `DURACION_SESION` | `12 * 3600` | Duración de una sesión |
+| Constante               | Valor       | Qué controla                                             |
+| ----------------------- | ----------- | -------------------------------------------------------- |
+| `HOST` (`main.py`)      | `"0.0.0.0"` | Acepta aparatos de la red (`"127.0.0.1"` = solo esta PC) |
+| `PUERTO` (`main.py`)    | `8080`      | Puerto del servidor                                      |
+| `USAR_HTTPS`            | `True`      | HTTPS (necesario para el GPS en el celular)              |
+| `RADIO_DEFECTO`         | `100`       | Radio de una sucursal nueva, en metros                   |
+| `PRECISION_MINIMA`      | `100`       | Error máximo del GPS aceptado, en metros                 |
+| `SEGUNDOS_ENTRE_MARCAS` | `5 * 60`    | Tiempo mínimo entre marcas                               |
+| `HORAS_SEMANALES`       | `44 * 3600` | Meta semanal                                             |
+| `TOLERANCIA_SEMANAL`    | `15 * 60`   | Desde 43 h 45 m cuenta como semana completa              |
+| `DURACION_SESION`       | `12 * 3600` | Duración de una sesión                                   |
 
 ## Problemas frecuentes
 
-| Problema | Solución |
-|---|---|
-| La página queda en blanco en el celular | Se entró con `http://` en vez de `https://`. La consola lo avisa: *"Conexión de … rechazada: entró por http:// en vez de https://"* |
-| En iPhone aparece la página del operador (por ejemplo *"miclaro.com.gt"*) y no deja pasar | La línea no tiene paquete de datos y Chrome confunde la red. Usa **Safari** |
-| El celular no carga y la consola no muestra nada | Revisa que ambos estén en la misma red y que en Windows la red sea **Privada** |
-| *"Ubicación imprecisa"* | Sal a un lugar abierto unos segundos para que el GPS se afine |
-| *"El puerto 8080 ya está en uso"* | Hay otra ventana del servidor abierta: ciérrala con `Ctrl + C` |
+| Problema                                                                                  | Solución                                                                                                                            |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| La página queda en blanco en el celular                                                   | Se entró con `http://` en vez de `https://`. La consola lo avisa: _"Conexión de … rechazada: entró por http:// en vez de https://"_ |
+| En iPhone aparece la página del operador (por ejemplo _"miclaro.com.gt"_) y no deja pasar | La línea no tiene paquete de datos y Chrome confunde la red. Usa **Safari**                                                         |
+| El celular no carga y la consola no muestra nada                                          | Revisa que ambos estén en la misma red y que en Windows la red sea **Privada**                                                      |
+| _"Ubicación imprecisa"_                                                                   | Sal a un lugar abierto unos segundos para que el GPS se afine                                                                       |
+| _"El puerto 8080 ya está en uso"_                                                         | Hay otra ventana del servidor abierta: ciérrala con `Ctrl + C`                                                                      |
 
 ## Pruebas automáticas
 
@@ -162,24 +162,24 @@ python -m unittest -v
 
 ## Archivos
 
-| Archivo | Qué hace |
-|---|---|
-| `main.py` | Arranca todo |
-| `servidor.py` | Recibe las peticiones del navegador (HTTP/HTTPS, cookies) |
-| `rutas.py` | Una función por página y los permisos de cada una |
-| `gestor.py` | Guarda y maneja los datos (CRUD, marcar con GPS, anomalías) |
-| `calculos.py` | Horas, alertas, reporte semanal, distancia y ubicación |
-| `modelos.py` | Las clases: Trabajador, Sucursal, RegistroAsistencia, Marcacion |
-| `sesiones.py` | Inicio de sesión y reglas de permisos |
-| `red.py` | IP de la PC y certificado HTTPS |
-| `utilidades.py` | Constantes, log, decoradores, horas, contraseñas |
-| `excepciones.py` | Errores propios del sistema |
-| `static/ubicacion.js` | Único JavaScript: lee el GPS del celular |
-| `static/estilos.css` | Estilos propios encima de Bootstrap |
-| `plantillas/` | Las páginas HTML |
-| `datos_ejemplo.json` | Datos de ejemplo (solo se usan si no existe `datos/datos.json`) |
-| `test_calculos.py` | Pruebas automáticas |
-| `iniciar.bat` | Arranque con doble clic (Windows) |
+| Archivo               | Qué hace                                                        |
+| --------------------- | --------------------------------------------------------------- |
+| `main.py`             | Arranca todo                                                    |
+| `servidor.py`         | Recibe las peticiones del navegador (HTTP/HTTPS, cookies)       |
+| `rutas.py`            | Una función por página y los permisos de cada una               |
+| `gestor.py`           | Guarda y maneja los datos (CRUD, marcar con GPS, anomalías)     |
+| `calculos.py`         | Horas, alertas, reporte semanal, distancia y ubicación          |
+| `modelos.py`          | Las clases: Trabajador, Sucursal, RegistroAsistencia, Marcacion |
+| `sesiones.py`         | Inicio de sesión y reglas de permisos                           |
+| `red.py`              | IP de la PC y certificado HTTPS                                 |
+| `utilidades.py`       | Constantes, log, decoradores, horas, contraseñas                |
+| `excepciones.py`      | Errores propios del sistema                                     |
+| `static/ubicacion.js` | Único JavaScript: lee el GPS del celular                        |
+| `static/estilos.css`  | Estilos propios encima de Bootstrap                             |
+| `plantillas/`         | Las páginas HTML                                                |
+| `datos_ejemplo.json`  | Datos de ejemplo (solo se usan si no existe `datos/datos.json`) |
+| `test_calculos.py`    | Pruebas automáticas                                             |
+| `iniciar.bat`         | Arranque con doble clic (Windows)                               |
 
 **No se suben al repositorio** (están en `.gitignore`):
 
@@ -191,8 +191,7 @@ python -m unittest -v
 
 - Las contraseñas se guardan cifradas (hash `pbkdf2` con sal), nunca tal cual.
 - `certificado/clave.pem` es la clave privada del certificado: no la compartas.
-- El navegador muestra *"conexión no privada"* porque el certificado es propio (autofirmado). La conexión sí va cifrada.
+- El navegador muestra _"conexión no privada"_ porque el certificado es propio (autofirmado). La conexión sí va cifrada.
 - Cambia las contraseñas iniciales (`Nombre1234`) antes de cualquier uso real.
 
-
-#ignore. Esta linea es para una prueba tecnica del 'gig pull'
+#ignore. Esta linea es para una prueba tecnica del 'git pull'
