@@ -1,0 +1,36 @@
+<!-- mi asistencia: cada usuario ve solo sus propias marcas -->
+<div class="mb-4">
+  <h1 class="h3 mb-0">Hola, {{nombre}}</h1>
+  <span class="text-body-secondary">Tu asistencia de la semana</span>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <!-- marcar: los botones los arma Python (rutas.html_marcar) y el GPS lo lee ubicacion.js -->
+    <div class="card tarjeta mb-4 border-primary">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-geo-alt-fill me-2"></i>Marcar asistencia</div>
+      <div class="card-body">{{marcar}}</div>
+    </div>
+    <div class="card tarjeta mb-4">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-person-badge me-2"></i>Mis datos</div>
+      <div class="card-body small">
+        <div class="mb-2"><span class="text-body-secondary">Sucursal:</span> {{sucursal}}</div>
+        <div><span class="text-body-secondary">Horario:</span><br>{{horario}}</div>
+      </div>
+    </div>
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-x-octagon me-2"></i>Mis intentos rechazados</div>
+      <div class="card-body">{{rechazados}}</div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent">{{navegacion}}</div>
+      <div class="card-body">{{contenido_semana}}</div>
+    </div>
+  </div>
+</div>
+
+<!-- el unico JavaScript del proyecto: lee el GPS al tocar el boton de marcar -->
+<script src="/static/ubicacion.js"></script>

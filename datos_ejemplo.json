@@ -1,0 +1,48 @@
+{
+  "_comentario": "Datos de ejemplo. Se cargan solo cuando no existe datos/datos.json. En dias_especiales: semanas_atras 0 = semana actual, 1 = la anterior...; sin 'marcas' = falta.",
+  "semanas_de_ejemplo": 3,
+  "_comentario_sucursales": "Se crean en este orden, asi que reciben los codigos SUC-001, SUC-002... Las coordenadas son de ejemplo: cambialas por las reales.",
+  "sucursales": [
+    { "nombre": "Bodega Central", "tipo": "BODEGA", "direccion": "Calzada Roosevelt, zona 11", "latitud": 14.6237, "longitud": -90.5538, "radio_metros": 150 },
+    { "nombre": "Tienda Zona 10", "tipo": "TIENDA", "direccion": "Avenida La Reforma, zona 10", "latitud": 14.5995, "longitud": -90.5082, "radio_metros": 100 }
+  ],
+  "trabajadores": [
+    {
+      "datos": {
+        "nombre": "Ana", "apellido": "López", "correo": "ana.lopez@empresa.com", "telefono": "5512-3456",
+        "puesto": "GERENTE", "fecha_ingreso": "2023-02-01", "horario_libre": true, "codigo_sucursal": "SUC-001"
+      },
+      "_comentario": "Ana tiene horario libre: no marca asistencia, por eso no tiene marcas"
+    },
+    {
+      "datos": {
+        "nombre": "Luis", "apellido": "Pérez", "correo": "luis.perez@empresa.com", "telefono": "4433-2211",
+        "puesto": "VENDEDOR", "fecha_ingreso": "2024-06-15", "hora_entrada": "08:00", "hora_salida": "17:00",
+        "trabaja_sabado": true, "sabado_entrada": "08:00", "sabado_salida": "12:00", "codigo_sucursal": "SUC-002"
+      },
+      "marcas_tipicas": { "entrada": "08:17:45", "salida_almuerzo": "12:05:00", "regreso_almuerzo": "13:20:30", "salida": "17:00:00" },
+      "marcas_sabado": { "entrada": "07:58:00", "salida": "12:02:00" },
+      "dias_especiales": [
+        { "semanas_atras": 1, "dia": "VIERNES", "marcas": { "entrada": "07:55:00", "salida_almuerzo": "12:00:00", "regreso_almuerzo": "12:58:00", "salida": "17:10:00" } }
+      ]
+    },
+    {
+      "datos": {
+        "nombre": "María", "apellido": "García", "correo": "maria.garcia@empresa.com", "telefono": "3021-8899",
+        "puesto": "DESARROLLADOR", "fecha_ingreso": "2025-01-10", "hora_entrada": "08:00", "hora_salida": "17:48", "codigo_sucursal": "SUC-001"
+      },
+      "marcas_tipicas": { "entrada": "07:58:00", "salida_almuerzo": "12:00:00", "regreso_almuerzo": "13:00:00", "salida": "17:47:00" },
+      "dias_especiales": [
+        { "semanas_atras": 2, "dia": "LUNES", "marcas": { "entrada": "08:00:00", "salida_almuerzo": "12:00:00", "regreso_almuerzo": "13:00:00", "salida": "17:15:00" } },
+        { "semanas_atras": 2, "dia": "JUEVES", "marcas": { "entrada": "08:02:00", "salida_almuerzo": "12:00:00" } }
+      ]
+    },
+    {
+      "_comentario": "Erin es el 4o trabajador, por eso recibe el codigo EMP-004 y queda como superadmin",
+      "datos": {
+        "nombre": "Erin", "apellido": "Morales", "correo": "erin.morales@empresa.com", "telefono": "4294-0071",
+        "puesto": "DESARROLLADOR", "fecha_ingreso": "2026-10-08", "hora_entrada": "08:00", "hora_salida": "17:00"
+      }
+    }
+  ]
+}

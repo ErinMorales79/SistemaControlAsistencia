@@ -1,0 +1,25 @@
+<!-- anomalias: marcas rechazadas por ubicacion; cada admin ve solo las de su gente -->
+<div class="mb-4">
+  <h1 class="h3 mb-0">Anomalías de ubicación</h1>
+  <span class="text-body-secondary">Intentos de marcar asistencia fuera de la sucursal, sin ubicación o con GPS impreciso</span>
+</div>
+
+<div class="card tarjeta">
+  <div class="card-header bg-transparent d-flex flex-wrap justify-content-between align-items-center gap-2">
+    {{navegacion}}
+    <span class="small text-body-secondary">{{total}} en esta semana</span>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Cuándo</th><th>Trabajador</th><th>Marca</th><th>Motivo</th><th>Sucursal (en ese momento)</th><th>Distancia</th><th>Precisión GPS</th><th></th></tr></thead>
+        <tbody>{{filas}}</tbody>
+      </table>
+    </div>
+    <p class="form-text mt-3 mb-0">
+      <strong>Distancia:</strong> metros entre el teléfono y el punto de la sucursal.
+      <strong>Precisión:</strong> cuánto puede equivocarse el GPS del teléfono (se rechaza si es mayor a 100 m).
+      La sucursal se muestra como era al momento de marcar, aunque después se haya movido.
+    </p>
+  </div>
+</div>

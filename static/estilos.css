@@ -1,0 +1,141 @@
+/* estilos.css - ajustes visuales encima de bootstrap */
+
+/* variables de color del proyecto */
+:root {
+  --fondo: #f3f5f9;
+  --barra-1: #1e2a4a;
+  --barra-2: #2f4a8a;
+  --borde-suave: #e4e8f0;
+  --sombra: 0 2px 10px rgba(30, 42, 74, 0.06);
+}
+
+body {
+  background: var(--fondo);
+}
+
+/* barra de navegacion con degradado */
+.barra {
+  background: linear-gradient(90deg, var(--barra-1), var(--barra-2));
+}
+.barra .nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+}
+
+/* tarjetas */
+.tarjeta {
+  border: 1px solid var(--borde-suave);
+  border-radius: 0.9rem;
+  box-shadow: var(--sombra);
+}
+.tarjeta .card-header {
+  border-bottom: 1px solid var(--borde-suave);
+  padding: 0.85rem 1rem;
+}
+
+/* tarjetas de numeros del inicio */
+.dato .icono {
+  font-size: 1.4rem;
+}
+.dato .numero {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0.25rem;
+}
+.dato .numero-chico {
+  font-size: 1.15rem;
+  padding: 0.45rem 0;
+}
+.dato .etiqueta {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+/* tablas */
+.table thead th {
+  color: #6c757d;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* codigo del trabajador */
+.codigo {
+  background: #eef2fb;
+  color: var(--barra-2);
+  font-family: var(--bs-font-monospace);
+}
+
+/* puntito de color en la lista de alertas */
+.punto {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.alerta-item + .alerta-item {
+  margin-top: 0.2rem;
+}
+
+/* navegacion entre semanas */
+.navegacion-semana {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* cuadritos L M M J V S del reporte */
+.dias {
+  display: flex;
+  gap: 0.25rem;
+}
+.dia {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.dia-completo {
+  background: #d1f2dd;
+  color: #146c43;
+}
+.dia-con-alertas {
+  background: #fff0c2;
+  color: #997404;
+}
+.dia-falta {
+  background: #f8d7da;
+  color: #b02a37;
+}
+.dia-feriado {
+  background: #dbe7ff;
+  color: #2f4a8a;
+}
+.dia-pendiente {
+  background: #eceff3;
+  color: #8a93a0;
+}
+.dia-sin-ingresar {
+  background: transparent;
+  color: #c3c9d2;
+  border: 1px dashed #c3c9d2;
+}
+
+.leyenda .dia {
+  margin: 0 0.25rem 0 0.6rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.progress {
+  height: 1.1rem;
+}

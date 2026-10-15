@@ -1,0 +1,62 @@
+<div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
+  <div>
+    <h1 class="h3 mb-0">Asistencia</h1>
+    <span class="text-body-secondary">Marcas de lunes a sábado: entrada, almuerzo, regreso y salida (el sábado no lleva almuerzo)</span>
+  </div>
+  <!-- boton deshacer: usa la PILA del gestor; solo lo ve el superadmin (rutas.html_boton_deshacer) -->
+  {{boton_deshacer}}
+</div>
+
+<!-- formulario de marcas: POST a /asistencia/registrar (nuevo) o /asistencia/actualizar (editar) -->
+<div class="card tarjeta mb-4">
+  <div class="card-header bg-transparent fw-semibold">{{form_titulo}}</div>
+  <div class="card-body">
+    <form method="post" action="{{form_accion}}">
+      <input type="hidden" name="volver" value="{{volver}}">
+      {{originales}}
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label class="form-label" for="codigo_trabajador">Trabajador</label>
+          <select class="form-select" id="codigo_trabajador" name="codigo_trabajador" required>{{opciones_trabajadores}}</select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label" for="fecha">Fecha</label>
+          <input class="form-control" id="fecha" name="fecha" type="date" value="{{v_fecha}}" max="{{hoy}}" required>
+        </div>
+        <div class="col-6 col-md-3 col-lg">
+          <label class="form-label" for="entrada">Entrada</label>
+          <input class="form-control" id="entrada" name="entrada" type="time" step="1" value="{{v_entrada}}" required>
+        </div>
+        <div class="col-6 col-md-3 col-lg">
+          <label class="form-label" for="salida_almuerzo">Sale a almorzar</label>
+          <input class="form-control" id="salida_almuerzo" name="salida_almuerzo" type="time" step="1" value="{{v_salida_almuerzo}}">
+        </div>
+        <div class="col-6 col-md-3 col-lg">
+          <label class="form-label" for="regreso_almuerzo">Regresa</label>
+          <input class="form-control" id="regreso_almuerzo" name="regreso_almuerzo" type="time" step="1" value="{{v_regreso_almuerzo}}">
+        </div>
+        <div class="col-6 col-md-3 col-lg">
+          <label class="form-label" for="salida">Salida</label>
+          <input class="form-control" id="salida" name="salida" type="time" step="1" value="{{v_salida}}">
+        </div>
+        <div class="col-md-3 col-lg-auto d-flex gap-2">
+          <button class="btn btn-primary flex-grow-1"><i class="bi bi-check2 me-1"></i>Guardar</button>
+          {{cancelar}}
+        </div>
+      </div>
+      <div class="form-text mt-2">Si el trabajador ya tiene registro ese día, se reemplaza. Solo la entrada es obligatoria.</div>
+    </form>
+  </div>
+</div>
+
+<div class="card tarjeta">
+  <div class="card-header bg-transparent">{{navegacion}}</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Día</th><th>Trabajador</th><th>Entrada</th><th>Almuerzo</th><th>Salida</th><th>Total</th><th>Jornada</th><th>Alertas</th><th></th></tr></thead>
+        <tbody>{{filas}}</tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+# datos reales del sistema (trabajadores, marcas, ubicaciones, log)
+datos/
+
+# certificado HTTPS: contiene la clave privada (se crea sola al arrancar)
+certificado/
+
+.vscode/
+
+
+# archivos compilados de python
+__pycache__/
+*.pyc
+
+CAMBIOS.md
+GuiaTecnica.txt

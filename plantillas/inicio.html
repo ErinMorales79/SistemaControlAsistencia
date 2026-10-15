@@ -1,0 +1,67 @@
+<div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
+  <div>
+    <h1 class="h3 mb-0">Panel de asistencia</h1>
+    <span class="text-body-secondary">Hoy {{fecha_hoy}} · resumen de la semana actual · <strong>{{alcance}}</strong></span>
+  </div>
+  <a class="btn btn-primary" href="/asistencia"><i class="bi bi-plus-lg me-1"></i>Registrar asistencia</a>
+</div>
+
+<!-- tarjetas de numeros -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-lg-3">
+    <div class="card tarjeta dato"><div class="card-body">
+      <i class="bi bi-people icono text-primary"></i>
+      <div class="numero">{{total_trabajadores}}</div><div class="etiqueta">Trabajadores</div>
+    </div></div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card tarjeta dato"><div class="card-body">
+      <i class="bi bi-check-circle icono text-success"></i>
+      <div class="numero">{{total_completas}}</div><div class="etiqueta">Jornadas completas</div>
+    </div></div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card tarjeta dato"><div class="card-body">
+      <i class="bi bi-exclamation-triangle icono text-warning"></i>
+      <div class="numero">{{total_alertas}}</div><div class="etiqueta">Alertas esta semana</div>
+    </div></div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="card tarjeta dato"><div class="card-body">
+      <i class="bi bi-hourglass-split icono text-info"></i>
+      <div class="numero numero-chico font-monospace">{{horas_semana}}</div><div class="etiqueta">Horas trabajadas</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-sun me-2"></i>Estado de hoy</div>
+      <div class="card-body">
+        {{aviso_hoy}}
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>#</th><th>Trabajador</th><th>Estado</th><th>Marcas</th><th>Total</th><th>Jornada</th></tr></thead>
+            <tbody>{{tabla_hoy}}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 d-flex flex-column gap-4">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-pie-chart me-2"></i>Alertas de la semana</div>
+      <ul class="list-group list-group-flush">{{resumen_alertas}}</ul>
+    </div>
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-bell me-2"></i>Últimas alertas registradas</div>
+      <ul class="list-group list-group-flush">{{alertas_recientes}}</ul>
+    </div>
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-calendar-heart me-2"></i>Próximos feriados</div>
+      <ul class="list-group list-group-flush">{{feriados}}</ul>
+    </div>
+  </div>
+</div>

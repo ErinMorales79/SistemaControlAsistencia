@@ -1,0 +1,73 @@
+<div class="mb-4">
+  <h1 class="h3 mb-0">Sucursales</h1>
+  <span class="text-body-secondary">La bodega y las tiendas de la empresa, con su ubicación en el mapa</span>
+</div>
+
+<div class="row g-4">
+  <!-- formulario: el mismo sirve para agregar (POST /sucursales/agregar) y editar (POST /sucursales/actualizar) -->
+  <div class="col-lg-4">
+    <div class="card tarjeta mb-4">
+      <div class="card-header bg-transparent fw-semibold">{{form_titulo}}</div>
+      <div class="card-body">
+        <form method="post" action="{{form_accion}}">
+          <input type="hidden" name="volver" value="{{volver}}">
+          <input type="hidden" name="codigo" value="{{v_codigo}}">
+          <div class="row g-2">
+            <div class="col-12">
+              <label class="form-label" for="nombre">Nombre de la sucursal</label>
+              <input class="form-control" id="nombre" name="nombre" value="{{v_nombre}}" required maxlength="60" placeholder="Tienda Zona 10">
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="tipo">Tipo</label>
+              <select class="form-select" id="tipo" name="tipo" required>{{opciones_tipo}}</select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="direccion">Dirección</label>
+              <input class="form-control" id="direccion" name="direccion" value="{{v_direccion}}" maxlength="120" placeholder="6a avenida 12-34, zona 10">
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="coordenadas">Ubicación geográfica (latitud, longitud)</label>
+              <input class="form-control font-monospace" id="coordenadas" name="coordenadas" value="{{v_coordenadas}}" required placeholder="14.634915, -90.506882">
+              <!-- este boton lo maneja ubicacion.js: llena el campo con la ubicacion del aparato -->
+              <button type="button" id="usar-ubicacion" class="btn btn-sm btn-outline-primary mt-2">
+                <i class="bi bi-crosshair me-1"></i>Usar mi ubicación actual
+              </button>
+              <p id="estado-gps" class="small text-body-secondary mt-1 mb-0"></p>
+              <div class="form-text">
+                Si estás <strong>en la sucursal</strong>, toca "Usar mi ubicación actual".
+                Si no, en Google Maps haz <strong>clic derecho</strong> sobre la sucursal, toca las coordenadas para copiarlas y pégalas aquí.
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="radio_metros">Radio permitido (metros)</label>
+              <input class="form-control" id="radio_metros" name="radio_metros" type="number" min="{{radio_minimo}}" max="{{radio_maximo}}" value="{{v_radio}}" required>
+              <div class="form-text">Distancia máxima al punto para que una marca de asistencia sea válida.</div>
+            </div>
+            <div class="col-12 d-flex gap-2 mt-2">
+              <button class="btn btn-primary flex-grow-1">{{boton}}</button>
+              {{cancelar}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-person-exclamation me-2"></i>Sin sucursal asignada ({{total_sin_sucursal}})</div>
+      <div class="card-body">
+        {{sin_sucursal}}
+        <div class="form-text mt-2">Toca un nombre para asignarle su sucursal.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="fw-semibold"><i class="bi bi-shop me-2"></i>Lista ({{total}})</span>
+    </div>
+    <div class="row g-4">{{tarjetas}}</div>
+  </div>
+</div>
+
+<!-- el unico JavaScript del proyecto: boton 'Usar mi ubicacion actual' -->
+<script src="/static/ubicacion.js"></script>

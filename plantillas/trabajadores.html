@@ -1,0 +1,112 @@
+<div class="mb-4">
+  <h1 class="h3 mb-0">Trabajadores</h1>
+  <span class="text-body-secondary">Agrega o edita trabajadores con sus datos, puesto y horario</span>
+</div>
+
+<div class="row g-4">
+  <!-- formulario: el mismo sirve para agregar (POST /trabajadores/agregar) y editar (POST /trabajadores/actualizar) -->
+  <!-- en pantallas grandes (xl) formulario y lista van lado a lado; en medianas, uno arriba del otro -->
+  <div class="col-xl-4">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold">{{form_titulo}}</div>
+      <div class="card-body">
+        <form method="post" action="{{form_accion}}">
+          <input type="hidden" name="volver" value="{{volver}}">
+          <input type="hidden" name="codigo" value="{{v_codigo}}">
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label" for="nombre">Nombre</label>
+              <input class="form-control" id="nombre" name="nombre" value="{{v_nombre}}" required maxlength="40">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="apellido">Apellido</label>
+              <input class="form-control" id="apellido" name="apellido" value="{{v_apellido}}" required maxlength="40">
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="correo">Correo</label>
+              <input class="form-control" id="correo" name="correo" type="email" value="{{v_correo}}" required placeholder="nombre@empresa.com">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="telefono">Teléfono</label>
+              <input class="form-control" id="telefono" name="telefono" value="{{v_telefono}}" required placeholder="5512-3456">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="puesto">Puesto</label>
+              <select class="form-select" id="puesto" name="puesto" required>{{opciones_puesto}}</select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="fecha_ingreso">Fecha de ingreso</label>
+              <input class="form-control" id="fecha_ingreso" name="fecha_ingreso" type="date" value="{{v_fecha_ingreso}}" max="{{hoy}}" required>
+            </div>
+            <div class="col-12">
+              <!-- sucursal donde trabaja: solo podra marcar asistencia dentro de ella -->
+              <label class="form-label" for="codigo_sucursal">Sucursal</label>
+              <select class="form-select" id="codigo_sucursal" name="codigo_sucursal">{{opciones_sucursal}}</select>
+            </div>
+            <!-- rol en el sistema: lo arma Python segun quien edita (rutas.html_campo_rol) -->
+            {{campo_rol}}
+            {{nota_clave}}
+            <div class="col-12">
+              <!-- checkbox: si esta marcado el navegador envia horario_libre=si -->
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="horario_libre" name="horario_libre" value="si" {{v_horario_libre}}>
+                <label class="form-check-label" for="horario_libre">Horario libre (no marca asistencia)</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="hora_entrada">Hora de entrada</label>
+              <input class="form-control" id="hora_entrada" name="hora_entrada" type="time" value="{{v_hora_entrada}}">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="hora_salida">Hora de salida</label>
+              <input class="form-control" id="hora_salida" name="hora_salida" type="time" value="{{v_hora_salida}}">
+            </div>
+            <div class="col-12 form-text">Lunes a viernes incluye 1 hora de almuerzo. Tolerancia de entrada: 5 minutos.</div>
+
+            <!-- sabados: si esta marcado se usan las dos horas de abajo -->
+            <div class="col-12 mt-3">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="trabaja_sabado" name="trabaja_sabado" value="si" {{v_trabaja_sabado}}>
+                <label class="form-check-label" for="trabaja_sabado">Trabaja sábados</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="sabado_entrada">Sábado: entrada</label>
+              <input class="form-control" id="sabado_entrada" name="sabado_entrada" type="time" value="{{v_sabado_entrada}}">
+            </div>
+            <div class="col-6">
+              <label class="form-label" for="sabado_salida">Sábado: salida</label>
+              <input class="form-control" id="sabado_salida" name="sabado_salida" type="time" value="{{v_sabado_salida}}">
+            </div>
+            <div class="col-12 form-text">
+              Todos deben completar <strong>44 horas por semana</strong> (se acepta desde 43h 45m).
+              El sábado no lleva almuerzo. Si no trabaja sábados, las horas del sábado se ignoran.
+              Con horario libre <strong>no marca asistencia</strong>: no tiene horario, meta de horas, faltas ni alertas.
+            </div>
+            <div class="col-12 d-flex gap-2 mt-2">
+              <button class="btn btn-primary flex-grow-1">{{boton}}</button>
+              {{cancelar}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-8">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span class="fw-semibold"><i class="bi bi-people me-2"></i>Lista ({{total}})</span>
+        <span class="small">Puestos en uso: {{puestos_en_uso}}</span>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>#</th><th>Código</th><th>Nombre</th><th>Puesto</th><th>Sucursal</th><th>Contacto</th><th>Horario</th><th></th></tr></thead>
+            <tbody>{{filas}}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

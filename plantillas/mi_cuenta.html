@@ -1,0 +1,46 @@
+<!-- mi cuenta: los admins cambian su propia contraseña (POST /mi-cuenta) -->
+<div class="mb-4">
+  <h1 class="h3 mb-0">Mi cuenta</h1>
+  <span class="text-body-secondary">Tus datos y tu contraseña</span>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-person-badge me-2"></i>Mis datos</div>
+      <div class="card-body small">
+        <div class="mb-2"><span class="text-body-secondary">Nombre:</span> {{nombre}}</div>
+        <div class="mb-2"><span class="text-body-secondary">Usuario:</span> {{correo}}</div>
+        <div class="mb-2"><span class="text-body-secondary">Rol:</span> {{rol}}</div>
+        <div><span class="text-body-secondary">Sucursal:</span> {{sucursal}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card tarjeta">
+      <div class="card-header bg-transparent fw-semibold"><i class="bi bi-key me-2"></i>Cambiar mi contraseña</div>
+      <div class="card-body">
+        <form method="post" action="/mi-cuenta">
+          <input type="hidden" name="volver" value="/mi-cuenta">
+          <div class="mb-3">
+            <label class="form-label" for="actual">Contraseña actual</label>
+            <input class="form-control" id="actual" name="actual" type="password" required autocomplete="current-password">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="nueva">Nueva contraseña</label>
+            <input class="form-control" id="nueva" name="nueva" type="password" required minlength="8" autocomplete="new-password">
+            <div class="form-text">Mínimo 8 caracteres.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="confirmacion">Repite la nueva contraseña</label>
+            <input class="form-control" id="confirmacion" name="confirmacion" type="password" required minlength="8" autocomplete="new-password">
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary"><i class="bi bi-save me-1"></i>Guardar contraseña</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
