@@ -194,5 +194,3 @@ python -m unittest -v
 - El navegador muestra *"conexión no privada"* porque el certificado es propio (autofirmado). La conexión sí va cifrada.
 - Cambia las contraseñas iniciales (`Nombre1234`) antes de cualquier uso real.
 
-
-#ignore. Esta linea es para una prueba tecnica del 'gig pull'
