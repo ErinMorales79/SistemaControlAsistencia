@@ -1,6 +1,7 @@
 # utilidades.py 
 # funciones de apoyo: logs, decoradores, conversion de horas y validaciones
-# solo depende de excepciones.py
+# solo depende de excepciones.py\
+#   VAMOS A PROBAR LAS HERRAMIENTAS GUI DE GIT
 
 import hashlib
 import hmac
