@@ -2,6 +2,8 @@
 # funciones de apoyo: logs, decoradores, conversion de horas y validaciones
 # solo depende de excepciones.py\
 #   VAMOS A PROBAR LAS HERRAMIENTAS GUI DE GIT
+#      SOURCETREE NO PUEDO HACER EL PUSH
+#      VAMOS A PORBAR GITKRAKEN
 
 import hashlib
 import hmac
