@@ -14,6 +14,8 @@
 #HACEMOS UN ULTIMO CAMBIO PORQUE ME HABIA ECHADO LAS HASHLIB JAJA (commit innesesario)
 #esta es su version oficial
 
+#staging
+
 import hashlib
 import hmac
 import logging
